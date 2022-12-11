@@ -18,7 +18,8 @@ import { storeToRefs } from "pinia";
 import { usePromptStore } from "@/store/prompt";
 
 
-const MyPrompt = usePromptStore()
+const MyPrompt = usePromptStore() 
+const name = "kahlid"
 
 const { prompt, generateImage, imgUrl, loading } = storeToRefs(MyPrompt)
 
