@@ -1,10 +1,14 @@
 <template>
-  <Nav/>
-  <Search @generate-image="generateImage  "/>
-  <Loader v-if="loading"/>
-  
+  <Nav />
+  <Search @generate-image="generateImage" />
+  <Loader v-if="loading" />
+
   <!-- <button @click="MyPrompt.generateImage">Trial</button> -->
-  <img :src="imgUrl" alt="f" v-if="imgUrl"/>
+  <div class="image">
+    <div v-for="(img, index) in imgUrl.data" :key="index">
+      <img :src="img.url" alt="f" v-if="imgUrl"/>
+    </div>
+  </div>
 </template>
 
 <script setup>
@@ -17,44 +21,34 @@ import Loader from "./components/Loader.vue";
 import { storeToRefs } from "pinia";
 import { usePromptStore } from "@/store/prompt";
 
+const MyPrompt = usePromptStore();
+const name = "kahlid";
 
-const MyPrompt = usePromptStore() 
-const name = "kahlid"
-
-const { prompt, generateImage, imgUrl, loading } = storeToRefs(MyPrompt)
-
-// onMounted(() => {
-//   console.log(import.meta.env.VITE_OPENAI_API_KEY);
-// });
-// const { Configuration, OpenAIApi } = "openai";
-
-// const imgUrl = ref("");
-// const loading = ref(false)
-
-// let prompt = ref(
-//   "A comic book cover of a superhero wearing headphones"
-// );
-
-
-// let imageSize = ref("512x512");
-
-// const configuration = new Configuration({
-//   apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-// });
-// const openai = new OpenAIApi(configuration);
-
-// const generateImage = async () => {
-//   loading.value = true
-//   const completion = await openai.createImage({
-//     prompt: prompt.value,
-//     n: 6,
-//     size: imageSize.value,
-//   });
-//   console.log(completion.data);
-//   imgUrl.value = completion.data.data[0].url;
-//   console.log(imgUrl.value);
-//   loading.value = false
-// };
+const { prompt, generateImage, imgUrl, loading } = storeToRefs(MyPrompt);
 </script>
 
-<style></style>
+<style scoped>
+.image{
+  display: grid;
+  align-items: center;
+  padding-inline: 50px;
+  gap: 50px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+/* .image{
+  width: 200px;
+  height: 200px;
+} */
+
+.image img{
+  width: 100%;
+}
+
+@media (min-width: 768px){
+  .image{
+    padding-inline: 100px;
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+</style>

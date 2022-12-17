@@ -4,7 +4,7 @@ import { Configuration, OpenAIApi } from "openai";
 
 export const usePromptStore = defineStore("prompts", () => {
   //   variables
-  let imageSize = ref("512x512");
+  let imageSize = ref("256x256");
   let prompt = ref("");
   let imgUrl = ref("");
   let loading = ref(false)
@@ -22,12 +22,12 @@ export const usePromptStore = defineStore("prompts", () => {
     imgUrl.value = ""
     const completion = await openai.createImage({
       prompt: prompt.value,
-      n: 6,
-      size: imageSize.value,
+      n: 4,
+      // size: imageSize.value,
     });
     console.log(completion.data);
-    imgUrl.value = completion.data.data[0].url;
-    console.log(imgUrl.value);
+    imgUrl.value = completion.data;
+    // console.log(imgUrl.value);
     loading.value = false;
     
     // console.log(prompt.value)
