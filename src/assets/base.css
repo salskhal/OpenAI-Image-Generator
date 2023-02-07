@@ -14,7 +14,8 @@ body {
   color: rgba(235, 235, 235, 0.64);
   color: black;
   /* background: #181818; */
-  background: white;
+  background: rgb(185, 214, 242);
+  
   transition: color 0.5s, background-color 0.5s;
   line-height: 1.6;
   font-family: "Poppins", sans-serif;

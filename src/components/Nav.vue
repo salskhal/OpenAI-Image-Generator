@@ -1,12 +1,10 @@
 <template>
   <nav>
     <div>
-      <h2>OpenAI Image Generator</h2>
+      <h2>SEN211 Project </h2>
     </div>
     <div>
-      <a href="https://beta.openai.com/docs/introduction" target="_blank"
-        >OpenAI Docs</a
-      >
+     <p>Image Generator</p>
     </div>
   </nav>
 </template>

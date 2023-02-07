@@ -25,7 +25,10 @@ const MyPrompt = usePromptStore();
 const { prompt, generateImage } = storeToRefs(MyPrompt);
 
 const generateImages = () => {
-  if (prompt.value === null || prompt.value.match(/^ *$/) !== null) return;
+  if (prompt.value === null || prompt.value.match(/^ *$/) !== null){
+    alert("pls enter a value")
+    return
+  } 
   MyPrompt.generateImage();
 };
 
