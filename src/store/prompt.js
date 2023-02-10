@@ -2,6 +2,10 @@ import { computed, ref, watch } from "vue";
 import { defineStore } from "pinia";
 import { Configuration, OpenAIApi } from "openai";
 
+import FileSaver from "file-saver";
+
+
+
 export const usePromptStore = defineStore("prompts", () => {
   //   variables
   let imageSize = ref("256x256");
@@ -33,5 +37,11 @@ export const usePromptStore = defineStore("prompts", () => {
     // console.log(prompt.value)
   };
 
-  return { prompt, generateImage,imgUrl, loading };
+  
+// const downloadFile= async (id, photo) =>  {
+//   FileSaver.saveAs(photo, `download-${id}.jpg`);
+// } 
+
+
+  return { prompt, generateImage,imgUrl, loading,  };
 });
